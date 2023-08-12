@@ -9,9 +9,7 @@ let package = Package(
         .library(
             name: "GPGoogleMaps-SPM",
             targets: [
-                "GoogleMaps",
-                "GoogleMapsBase",
-                "GoogleMapsCore"
+                "GoogleMapUmbrella"
             ]),
     ],
     targets: [
@@ -29,6 +27,12 @@ let package = Package(
             name: "GoogleMapsCore",
             url: "https://github.com/good-potatos/GPGoogleMaps-SPM/releases/download/8.0.0/GoogleMapsCore.xcframework.zip",
             checksum: "a2f3f325da97815da382394b0d08411ccdee0310c9f5a210a6b00e9d3ca22882"
-        )
+        ),
+        .target(name: "GoogleMapUmbrella",
+                dependencies: [
+                    .target(name: "GoogleMaps"),
+                    .target(name: "GoogleMapsBase"),
+                    .target(name: "GoogleMapsCore")
+                ])
     ]
 )
